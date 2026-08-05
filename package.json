@@ -1,0 +1,24 @@
+{
+  "name": "deploy",
+  "version": "1.0.0",
+  "description": "Deploys **Urban Compact** and **Performance Street** on one Contabo VPS with shared Postgres/Redis, Nginx, and Let's Encrypt.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hassansrour099-cell/medusa-stores-deploy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/hassansrour099-cell/medusa-stores-deploy/issues"
+  },
+  "homepage": "https://github.com/hassansrour099-cell/medusa-stores-deploy#readme",
+  "dependencies": {
+    "ssh2": "^1.17.0"
+  }
+}
