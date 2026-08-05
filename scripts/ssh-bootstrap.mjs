@@ -62,7 +62,7 @@ conn
       )
       await exec(
         conn,
-        "curl -fsSL https://raw.githubusercontent.com/hassansrour099-cell/medusa-stores-deploy/master/scripts/remote-bootstrap.sh | bash"
+        "curl -fsSL https://raw.githubusercontent.com/hassansrour099-cell/contabo-medusa-deploy/master/scripts/remote-bootstrap.sh | bash"
       )
       console.log("\nBootstrap finished.")
       conn.end()

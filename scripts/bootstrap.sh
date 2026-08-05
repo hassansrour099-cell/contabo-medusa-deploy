@@ -10,7 +10,7 @@ UC_DIR="${DEPLOY_ROOT}/urban-compact"
 PS_DIR="${DEPLOY_ROOT}/performance-street"
 UC_REPO="${UC_REPO:-https://github.com/hassansrour099-cell/urban-compact-store.git}"
 PS_REPO="${PS_REPO:-https://github.com/hassansrour099-cell/performance-street-store.git}"
-DEPLOY_REPO="${DEPLOY_REPO:-https://github.com/hassansrour099-cell/medusa-stores-deploy.git}"
+DEPLOY_REPO="${DEPLOY_REPO:-https://github.com/hassansrour099-cell/contabo-medusa-deploy.git}"
 
 echo "==> Bootstrap medusa-stores on $(hostname) at ${DEPLOY_ROOT}"
 

@@ -7,6 +7,6 @@ apt-get install -y --no-install-recommends ca-certificates curl git
 mkdir -p /opt/medusa-stores
 cd /opt/medusa-stores
 if [[ ! -d deploy/.git ]]; then
-  git clone --depth 1 https://github.com/hassansrour099-cell/medusa-stores-deploy.git deploy
+  git clone --depth 1 https://github.com/hassansrour099-cell/contabo-medusa-deploy.git deploy
 fi
 bash /opt/medusa-stores/deploy/scripts/bootstrap.sh
