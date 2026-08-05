@@ -92,6 +92,9 @@ if [[ ! -f .env ]]; then
   sed -i "s|UC_COOKIE_SECRET=.*|UC_COOKIE_SECRET=$(openssl rand -hex 32)|" .env
   sed -i "s|PS_JWT_SECRET=.*|PS_JWT_SECRET=$(openssl rand -hex 32)|" .env
   sed -i "s|PS_COOKIE_SECRET=.*|PS_COOKIE_SECRET=$(openssl rand -hex 32)|" .env
+  # Build-time placeholders — replace with real publishable keys from each admin
+  sed -i "s|UC_PUBLISHABLE_KEY=.*|UC_PUBLISHABLE_KEY=pk_pending_uc|" .env
+  sed -i "s|PS_PUBLISHABLE_KEY=.*|PS_PUBLISHABLE_KEY=pk_pending_ps|" .env
 fi
 
 mkdir -p certbot/www certbot/conf
