@@ -4,7 +4,7 @@ WORKDIR /app
 COPY package.json package-lock.json turbo.json ./
 COPY apps/backend/package.json ./apps/backend/
 COPY apps/storefront/package.json ./apps/storefront/
-RUN npm ci --omit=dev=false
+RUN npm install --no-audit --no-fund
 
 FROM deps AS builder
 ARG NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY
