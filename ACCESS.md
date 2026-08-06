@@ -33,13 +33,16 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEi6MHSAKuKLNjnhtVJg6Pr0MrnHFWPquOJt67vSrJho
 
 ## DNS (required for HTTPS)
 
-GoDaddy → Domain `hassansrour.me` → Nameservers → set:
+Keep GoDaddy nameservers. In GoDaddy DNS, add A records only:
 
-- `ns1.vercel-dns.com`
-- `ns2.vercel-dns.com`
+| Host | Value |
+|---|---|
+| urban | 169.58.124.240 |
+| api-urban | 169.58.124.240 |
+| street | 169.58.124.240 |
+| api-street | 169.58.124.240 |
 
-Store A records are already in Vercel DNS → `169.58.124.240`.
-After DNS propagates, on the VPS:
+After they resolve, on the VPS:
 
 ```bash
 cd /opt/medusa-stores/deploy && bash scripts/setup-ssl.sh

@@ -20,29 +20,20 @@ Deploys **Urban Compact** and **Performance Street** on one Contabo VPS with sha
   performance-street/     # github.com/hassansrour099-cell/performance-street-store
 ```
 
-## DNS
+## DNS (GoDaddy — keep current nameservers)
 
-`hassansrour.me` is registered at GoDaddy but the portfolio is on Vercel. Prefer **one** of these:
+Do **not** switch nameservers to Vercel. The apex portfolio stays on the existing GoDaddy DNS setup.
 
-### Option A (recommended) — point nameservers at Vercel
+In GoDaddy → DNS → add these **A** records only:
 
-In GoDaddy → Domain → Nameservers → Custom:
+| Type | Name | Value | TTL |
+|---|---|---|---|
+| A | urban | 169.58.124.240 | 600 |
+| A | api-urban | 169.58.124.240 | 600 |
+| A | street | 169.58.124.240 | 600 |
+| A | api-street | 169.58.124.240 | 600 |
 
-- `ns1.vercel-dns.com`
-- `ns2.vercel-dns.com`
-
-A records for the store subdomains are already created in the Vercel DNS panel:
-
-| Type | Name | Value |
-|---|---|---|
-| A | urban | 169.58.124.240 |
-| A | api-urban | 169.58.124.240 |
-| A | street | 169.58.124.240 |
-| A | api-street | 169.58.124.240 |
-
-### Option B — keep GoDaddy nameservers
-
-Add the same four **A** records in GoDaddy DNS instead.
+After they resolve, run `bash scripts/setup-ssl.sh` on the VPS.
 
 ## Quick start (on the VPS as root)
 
