@@ -1,4 +1,4 @@
-# Medusa v2 backend — production image from monorepo root
+# Medusa v2 backend — monorepo root context
 FROM node:20-bookworm-slim AS deps
 RUN apt-get update \
   && apt-get install -y --no-install-recommends python3 make g++ \
@@ -13,25 +13,18 @@ FROM deps AS builder
 COPY apps/backend ./apps/backend
 WORKDIR /app/apps/backend
 ENV NODE_ENV=production
-RUN npm run build \
-  && test -f .medusa/server/package.json \
-  && ls -la .medusa/server/public/admin | head
-
-# Install production deps inside the built server package
-WORKDIR /app/apps/backend/.medusa/server
-RUN npm install --omit=dev --no-audit --no-fund
+RUN npm run build
 
 FROM node:20-bookworm-slim AS runner
 RUN apt-get update \
   && apt-get install -y --no-install-recommends curl \
   && rm -rf /var/lib/apt/lists/*
-WORKDIR /server
+WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=9000
-COPY --from=builder /app/apps/backend/.medusa/server ./
-# Seed / exec scripts still live in the original tree for medusa exec
-COPY --from=builder /app/apps/backend/src/scripts ./src/scripts
-COPY --from=builder /app/apps/backend/src/migration-scripts ./src/migration-scripts
+ENV DISABLE_MEDUSA_ADMIN=true
+COPY --from=builder /app /app
+WORKDIR /app/apps/backend
 EXPOSE 9000
 HEALTHCHECK --interval=30s --timeout=5s --start-period=120s --retries=8 \
   CMD curl -fsS "http://127.0.0.1:${PORT}/health" || exit 1
